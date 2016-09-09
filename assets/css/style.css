@@ -1,0 +1,55 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 70px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #aaa;
+}
+
+footer a {
+  color: gray;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer nav ul {
+  float: right;
+  list-style: none;
+}
+
+footer nav ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+h1 {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.centering {
+  text-align: center;
+}
+
+.navbar-brand {
+  line-height: 23px;
+  padding: 5px 15px 5px 10px;
+}

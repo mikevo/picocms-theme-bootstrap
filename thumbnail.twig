@@ -1,0 +1,22 @@
+{% include 'prolog.twig' %}
+<section id="content">
+  {{ content }}
+  <div class="row">
+  {% for page in pages if current_page.meta.filter in page.meta.tag|replace({' ': ''})|split(',') %}
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <br />
+        <a href="{% if page.meta.link %}{{ page.meta.link }}{% else %}{{ page.url }}{% endif %}">
+          <img {%if current_page.meta.circle %} class="img-circle" {% endif %} src="{{ config.image_prefix }}/{{ page.meta.image }}" alt="{{ page.title }}" style="width: 200px; height: 200px;" />
+        </a>
+        <div class="caption">
+          <h3>{{ page.title }}</h3>
+          <p>{{ page.description }}</p>
+          <a class="btn btn-default" href="{% if page.meta.link %}{{ page.meta.link }}{% else %}{{ page.url }}{% endif %}" role="button">Details</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</section>
+{% include 'epilog.twig' %}

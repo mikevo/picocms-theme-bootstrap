@@ -1,0 +1,30 @@
+<!--
+  The idea and parts of the code are taken from the Bootstrap example docs
+  available at:
+  https://github.com/twbs/bootstrap/blob/master/docs/examples/carousel/
+
+  The material is available under the conditions stated at:
+  https://github.com/twbs/bootstrap#copyright-and-license
+-->
+{% include 'prolog.twig' %}
+<section id="content">
+  {{ content }}
+  {% set pullright = 1 %}
+  {% set first = 1 %}
+  {% for page in pages|sort_by("time")|reverse if current_page.meta.filter in page.meta.tag|replace({' ': ''})|split(',') %}
+    {% if not first %}<hr  class="featurette-divider" />{% endif %}
+    <div class="featurette">
+      {% if pullright %}
+        <img class="featurette-image pull-right" src="{{ config.image_prefix }}/{{ page.meta.image }}" alt="{{ page.title }}" />
+        {% set pullright = 0 %}
+      {% else %}
+        <img class="featurette-image pull-left" src="{{ config.image_prefix }}/{{ page.meta.image }}" alt="{{ page.title }}"/>
+        {% set pullright = 1 %}
+      {% endif %}
+      <h2 class="featurette-heading">{{ page.title }} <span class="text-muted">{{ page.meta.slogan }}</span></h2>
+      <p class="lead">{{ page.description }}</p>
+    </div>
+    {% set first = 0 %}
+  {% endfor %}
+</section>
+{% include 'epilog.twig' %}

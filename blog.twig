@@ -1,0 +1,15 @@
+{% include 'prolog.twig' %}
+<section id="content">
+  {{ content }}
+  {% for page in pages|sort_by("time")|reverse if current_page.meta.filter in page.meta.tag|replace({' ': ''})|split(',') %}
+    <div class="post">
+      <hr />
+      <h3><a href="{{ page.url }}">{{ page.title }}</a></h3>
+      <p>
+        <small>{{ page.time | date("Y-m-d") }}{% if page.author %} by {{ page.author }}{% endif %}</small>
+      </p>
+      <p class="excerpt">{{ page.description }}</p>
+    </div>
+  {% endfor %}
+</section>
+{% include 'epilog.twig' %}
